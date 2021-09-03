@@ -17,7 +17,6 @@ class CustomDio {
     dio.options.baseUrl = KApiBaseUrl;
     dio.options.validateStatus = (_) => true;
 
-
     print(dio.options.headers.toString());
     print(dio.options.baseUrl);
     dio.options.sendTimeout = 10000;
@@ -35,7 +34,6 @@ class CustomDio {
       Map<String, dynamic> body = const <String, dynamic>{},
       Map<String, dynamic> query = const <String, dynamic>{},
       String? saveDirPath}) async {
-
     late Response res;
 
     final _body = {}..addAll(body);

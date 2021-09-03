@@ -3,7 +3,6 @@ import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:movie_app_riverpod/src/controllers/movie_detail_controller.dart';
 import 'package:movie_app_riverpod/src/utils/my_scroll_behavior.dart';
-import 'package:movie_app_riverpod/src/widgets/movie_gallery.dart';
 
 class MovieDetailPage extends StatefulWidget {
   MovieDetailPage({Key? key, required this.movieId}) : super(key: key);
@@ -60,7 +59,7 @@ class _MovieDetailPageState extends State<MovieDetailPage> {
                                               width: width,
                                               height: width,
                                               child: Image.network(
-                                                 model.posterPath,
+                                                model.posterPath,
                                                 fit: BoxFit.cover,
                                               ),
                                             ),
@@ -72,9 +71,7 @@ class _MovieDetailPageState extends State<MovieDetailPage> {
                                           child: Row(
                                             mainAxisAlignment:
                                                 MainAxisAlignment.start,
-                                            children: <Widget>[
-
-                                            ],
+                                            children: <Widget>[],
                                           ),
                                         )
                                       ],
@@ -142,12 +139,12 @@ class _MovieDetailPageState extends State<MovieDetailPage> {
                                       Expanded(
                                         child: Container(),
                                       ),
-                                      _buildMovieMoreInfoItem(
-                                          "Year", model.releaseDate.substring(0, 4)),
+                                      _buildMovieMoreInfoItem("Year",
+                                          model.releaseDate.substring(0, 4)),
                                       _buildMovieMoreInfoItem("Country",
                                           model.countryName.toString()),
-                                      _buildMovieMoreInfoItem(
-                                          "Length", "${model.runtime.toString()} min"),
+                                      _buildMovieMoreInfoItem("Length",
+                                          "${model.runtime.toString()} min"),
                                       Expanded(
                                         child: Container(),
                                       ),
@@ -245,10 +242,10 @@ class _MovieDetailPageState extends State<MovieDetailPage> {
             Text(
               title,
               style: TextStyle(
-                  color: Colors.black45,
-                  fontSize: 12.0,
-                  fontWeight: FontWeight.bold,
-                   ),
+                color: Colors.black45,
+                fontSize: 12.0,
+                fontWeight: FontWeight.bold,
+              ),
             ),
             Padding(
               padding: EdgeInsets.only(top: 5),
@@ -260,10 +257,10 @@ class _MovieDetailPageState extends State<MovieDetailPage> {
                   maxLines: 1,
                   overflow: TextOverflow.ellipsis,
                   style: TextStyle(
-                      color: Colors.black,
-                      fontSize: 16.0,
-                      fontWeight: FontWeight.bold,
-                       ),
+                    color: Colors.black,
+                    fontSize: 16.0,
+                    fontWeight: FontWeight.bold,
+                  ),
                 ),
               ],
             ),

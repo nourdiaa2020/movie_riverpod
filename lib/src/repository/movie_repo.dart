@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:movie_app_riverpod/src/models/movie.dart';
 import 'package:movie_app_riverpod/src/utils/config.dart';
