@@ -1,0 +1,46 @@
+name: movie_app_riverpod
+description: A new Flutter project.
+
+publish_to: 'none'
+
+
+version: 1.0.0+1
+
+environment:
+  sdk: ">=2.13.0 <3.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+
+  #for state management
+  flutter_riverpod: ^0.14.0+3
+  #to notify user
+  fluttertoast: ^8.0.8
+  #to share movie link
+  share: ^2.0.4
+  #to inject shared_preferences
+  get_it:
+  #to save user favorites
+  shared_preferences:
+  #to show movie rating
+  flutter_rating_bar: ^4.0.0
+
+
+
+  #for http requests
+  dio: ^4.0.0
+
+  cupertino_icons: ^1.0.3
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+
+flutter:
+
+
+  uses-material-design: true
+
