@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 class MovieGallery extends StatefulWidget {
   final int movieId;
 
-  MovieGallery({Key? key, required this.movieId}) : super(key: key);
+  MovieGallery({Key? key,required this.movieId}) : super(key: key);
 
   @override
   _MovieGalleryState createState() => _MovieGalleryState();
@@ -13,6 +13,10 @@ class _MovieGalleryState extends State<MovieGallery> {
   @override
   Widget build(BuildContext context) {
     var width = MediaQuery.of(context).size.width;
+    bool isFirst = true;
+
+    /// change
+    var imagePath = "";
     return Container(
       height: width / 3,
       margin: EdgeInsets.only(bottom: 50, top: 10),
@@ -25,7 +29,8 @@ class _MovieGalleryState extends State<MovieGallery> {
           return Card(
             clipBehavior: Clip.antiAliasWithSaveLayer,
             elevation: 10.0,
-            margin: EdgeInsets.only(left: 0, right: 10, bottom: 20),
+            margin:
+                EdgeInsets.only(left: isFirst ? 0 : 10, right: 10, bottom: 20),
             shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.all(Radius.circular(10.0))),
             child: Image.network(

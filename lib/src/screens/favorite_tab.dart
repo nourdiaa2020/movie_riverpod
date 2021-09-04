@@ -35,6 +35,7 @@ class _FavoriteTabState extends State<FavoriteTab> {
       itemBuilder: (context, index) {
         return MovieItem(
           movie: list[index],
+          isFromFav: true,
           onAddToFavorite: () {
             setState(() {
               list = DataStorage.allFavorite();

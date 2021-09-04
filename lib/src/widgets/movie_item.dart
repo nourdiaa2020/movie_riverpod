@@ -7,10 +7,13 @@ import 'package:share/share.dart';
 class MovieItem extends StatelessWidget {
   final Movie movie;
   final Function() onAddToFavorite;
+  final bool isFromFav;
 
-  const MovieItem(
-      {Key? key, required this.movie, required this.onAddToFavorite})
-      : super(key: key);
+  MovieItem({
+    this.isFromFav: false,
+    required this.movie,
+    required this.onAddToFavorite,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -46,50 +49,51 @@ class MovieItem extends StatelessWidget {
                 movie.posterPath,
                 fit: BoxFit.cover,
               ),
-              Positioned(
-                top: 5,
-                right: 5,
-                child: InkWell(
-                  onTap: () {
-                    /// to do add to favorite
-                    DataStorage.saveOrDeleteFavorite(movie);
-                    onAddToFavorite();
-                  },
-                  child: Container(
-                    padding: EdgeInsets.all(5),
-                    child: movie.isInFavorite
-                        ? Icon(
-                            Icons.favorite,
-                            color: Colors.red,
-                          )
-                        : Icon(Icons.favorite_border),
-                    decoration: BoxDecoration(
-                      color: Colors.grey.withOpacity(.5),
-                      borderRadius: BorderRadius.circular(30),
-                    ),
-                  ),
-                ),
-              ),
-              Positioned(
-                top: 5,
-                left: 5,
-                child: InkWell(
-                  onTap: () async {
-                    await Share.share(movie.shareLinkUrl);
-                  },
-                  child: Container(
-                    padding: EdgeInsets.all(5),
-                    child: Icon(
-                      Icons.share,
-                      color: Colors.white,
-                    ),
-                    decoration: BoxDecoration(
-                      color: Colors.grey.withOpacity(.9),
-                      borderRadius: BorderRadius.circular(30),
-                    ),
-                  ),
-                ),
-              )
+              isFromFav
+                  ? Positioned(
+                      top: 5,
+                      right: 5,
+                      child: InkWell(
+                        onTap: () {
+                          /// to do add to favorite
+                          DataStorage.saveOrDeleteFavorite(movie);
+                          onAddToFavorite();
+                        },
+                        child: Container(
+                          padding: EdgeInsets.all(5),
+                          child: Icon(
+                            movie.isInFavorite
+                                ? Icons.favorite
+                                : Icons.favorite_border,
+                          ),
+                          decoration: BoxDecoration(
+                            color: Colors.grey.withOpacity(.5),
+                            borderRadius: BorderRadius.circular(30),
+                          ),
+                        ),
+                      ),
+                    )
+                  : SizedBox(),
+              // Positioned(
+              //   top: 5,
+              //   left: 5,
+              //   child: InkWell(
+              //     onTap: () async {
+              //       await Share.share(movie.shareLinkUrl);
+              //     },
+              //     child: Container(
+              //       padding: EdgeInsets.all(5),
+              //       child: Icon(
+              //         Icons.share,
+              //         color: Colors.white,
+              //       ),
+              //       decoration: BoxDecoration(
+              //         color: Colors.grey.withOpacity(.9),
+              //         borderRadius: BorderRadius.circular(30),
+              //       ),
+              //     ),
+              //   ),
+              // )
             ],
           ),
         ),

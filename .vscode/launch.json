@@ -8,7 +8,7 @@
             "name": "movie_app_riverpod",
             "request": "launch",
             "type": "dart",
-            "flutterMode": "release"
+            "flutterMode": "debug"
         },
         {
             "name": "movie_app_riverpod (profile mode)",

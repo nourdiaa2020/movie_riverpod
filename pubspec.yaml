@@ -26,6 +26,8 @@ dependencies:
   shared_preferences:
   #to show movie rating
   flutter_rating_bar: ^4.0.0
+  #for image sliders view
+  carousel_slider: ^4.0.0
 
 
 

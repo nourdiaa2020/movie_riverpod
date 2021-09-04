@@ -6,12 +6,12 @@ class Movie {
   final String title;
   final String desc;
   final String posterPath;
-  bool isInFavorite;
+    bool isInFavorite;
   final String shareLinkUrl;
 
 //<editor-fold desc="Data Methods">
 
-  Movie({
+    Movie({
     required this.id,
     required this.title,
     required this.desc,
@@ -70,7 +70,7 @@ class Movie {
         id: map['id'] as int,
         title: map['title'] as String,
         desc: map['original_title'] as String,
-        posterPath: "$KImageApiBaseUrl${map['poster_path'].toString()}",
+        posterPath: "${KImageApiBaseUrl}${map['poster_path'].toString()}",
         isInFavorite: DataStorage.isInFavorite(map['id'] as int),
         shareLinkUrl: KApiBaseUrl + map['id'].toString());
   }

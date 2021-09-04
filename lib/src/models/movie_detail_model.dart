@@ -1,4 +1,7 @@
+import 'dart:developer';
+
 import 'package:movie_app_riverpod/src/utils/config.dart';
+import 'package:movie_app_riverpod/src/utils/data_storage.dart';
 
 class MovieDetailModel {
   final bool adult;
@@ -22,10 +25,11 @@ class MovieDetailModel {
   final double voteAverage;
   final int voteCount;
   final String countryName;
+  bool isInFavorite;
 
 //<editor-fold desc="Data Methods">
 
- const MovieDetailModel({
+  MovieDetailModel({
     required this.adult,
     required this.backdropPath,
     required this.budget,
@@ -45,11 +49,12 @@ class MovieDetailModel {
     required this.tagline,
     required this.title,
     required this.video,
+    required this.isInFavorite,
     required this.voteAverage,
     required this.voteCount,
   });
 
- @override
+  @override
   bool operator ==(Object other) =>
       identical(this, other) ||
       (other is MovieDetailModel &&
@@ -75,7 +80,7 @@ class MovieDetailModel {
           voteAverage == other.voteAverage &&
           voteCount == other.voteCount);
 
- @override
+  @override
   int get hashCode =>
       adult.hashCode ^
       backdropPath.hashCode ^
@@ -98,7 +103,7 @@ class MovieDetailModel {
       voteAverage.hashCode ^
       voteCount.hashCode;
 
- @override
+  @override
   String toString() {
     return 'MovieDetailModel{' +
         ' adult: $adult,' +
@@ -124,9 +129,7 @@ class MovieDetailModel {
         '}';
   }
 
-
-
- Map<String, dynamic> toMap() {
+  Map<String, dynamic> toMap() {
     return {
       'adult': this.adult,
       'backdropPath': this.backdropPath,
@@ -152,6 +155,7 @@ class MovieDetailModel {
   }
 
   factory MovieDetailModel.fromMap(Map<String, dynamic> map) {
+    log(map.toString());
     return MovieDetailModel(
       adult: map['adult'] as bool,
       backdropPath: map['backdrop_path'] as String,
@@ -163,7 +167,7 @@ class MovieDetailModel {
       originalTitle: map['original_title'] as String,
       overview: map['overview'] as String,
       popularity: map['popularity'] as double,
-      posterPath: KImageApiBaseUrl+map['poster_path'],
+      posterPath: KImageApiBaseUrl + map['poster_path'],
       releaseDate: map['release_date'] as String,
       revenue: map['revenue'] as int,
       runtime: map['runtime'] as int,
@@ -171,9 +175,10 @@ class MovieDetailModel {
       tagline: map['tagline'] as String,
       title: map['title'] as String,
       video: map['video'] as bool,
-      countryName: map['production_countries'][0]['iso_3166_1']  ,
+      countryName: map['production_countries'][0]['iso_3166_1'],
       voteAverage: map['vote_average'] as double,
       voteCount: map['vote_count'] as int,
+      isInFavorite: DataStorage.isInFavorite(map['id'] as int),
     );
   }
 
